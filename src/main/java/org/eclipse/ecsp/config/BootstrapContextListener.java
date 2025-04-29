@@ -20,10 +20,10 @@
 
 package org.eclipse.ecsp.config;
 
-import org.eclipse.ecsp.common.config.EnvConfigLocation;
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
 import org.apache.commons.lang3.StringUtils;
+import org.eclipse.ecsp.common.config.EnvConfigLocation;
 import org.eclipse.ecsp.exception.shared.ApiResourceNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -20,11 +20,11 @@
 
 package org.eclipse.ecsp.config;
 
-import org.eclipse.ecsp.common.config.EnvConfig;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import jakarta.annotation.PostConstruct;
 import org.apache.commons.lang3.time.StopWatch;
 import org.eclipse.ecsp.auth.lib.config.AuthProperty;
+import org.eclipse.ecsp.common.config.EnvConfig;
 import org.eclipse.ecsp.exception.shared.ApiTechnicalException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

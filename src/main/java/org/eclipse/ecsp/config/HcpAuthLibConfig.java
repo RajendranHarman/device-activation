@@ -20,10 +20,10 @@
 
 package org.eclipse.ecsp.config;
 
-import org.eclipse.ecsp.common.config.EnvConfig;
-import org.eclipse.ecsp.common.config.EnvConfigLoader;
 import jakarta.annotation.Resource;
 import org.eclipse.ecsp.auth.lib.config.AuthProperty;
+import org.eclipse.ecsp.common.config.EnvConfig;
+import org.eclipse.ecsp.common.config.EnvConfigLoader;
 import org.eclipse.ecsp.springauth.client.rest.SpringAuthRestClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

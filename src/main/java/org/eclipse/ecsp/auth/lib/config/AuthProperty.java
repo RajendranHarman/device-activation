@@ -20,9 +20,9 @@
 
 package org.eclipse.ecsp.auth.lib.config;
 
+import org.eclipse.ecsp.common.CommonConstants;
 import org.eclipse.ecsp.common.config.EnvConfigProperty;
 import org.eclipse.ecsp.common.config.EnvConfigPropertyType;
-import org.eclipse.ecsp.common.CommonConstants;
 
 /**
  * This enum represents the authentication properties used in the application.

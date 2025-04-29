@@ -20,10 +20,10 @@
 
 package org.eclipse.ecsp.auth.lib.util;
 
-import org.eclipse.ecsp.common.config.EnvConfig;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.eclipse.ecsp.auth.lib.config.AuthProperty;
+import org.eclipse.ecsp.common.config.EnvConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

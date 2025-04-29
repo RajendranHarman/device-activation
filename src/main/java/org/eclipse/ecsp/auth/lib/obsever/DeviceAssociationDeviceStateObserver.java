@@ -20,10 +20,10 @@
 
 package org.eclipse.ecsp.auth.lib.obsever;
 
-import org.eclipse.ecsp.common.config.EnvConfig;
 import org.eclipse.ecsp.auth.lib.config.AuthProperty;
 import org.eclipse.ecsp.auth.lib.rest.model.ActivationStateToDeviceStateAdapter;
 import org.eclipse.ecsp.auth.lib.rest.model.DeactivationStateToDeviceStateAdapter;
+import org.eclipse.ecsp.common.config.EnvConfig;
 import org.eclipse.ecsp.services.clientlib.HcpRestClientLibrary;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

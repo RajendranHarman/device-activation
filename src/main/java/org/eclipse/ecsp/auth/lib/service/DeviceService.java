@@ -20,7 +20,6 @@
 
 package org.eclipse.ecsp.auth.lib.service;
 
-import org.eclipse.ecsp.common.config.EnvConfig;
 import org.apache.commons.lang3.StringUtils;
 import org.eclipse.ecsp.auth.lib.config.AuthProperty;
 import org.eclipse.ecsp.auth.lib.dao.DeviceFactoryData;
@@ -39,6 +38,7 @@ import org.eclipse.ecsp.auth.lib.util.DeviceActivationUtil;
 import org.eclipse.ecsp.auth.lib.validate.DeviceValidator;
 import org.eclipse.ecsp.auth.lib.validate.DeviceValidatorFactory;
 import org.eclipse.ecsp.auth.lib.validate.DeviceValidatorFactory.OemEnvironment;
+import org.eclipse.ecsp.common.config.EnvConfig;
 import org.eclipse.ecsp.notification.lib.model.nc.UserProfile;
 import org.eclipse.ecsp.notification.lib.rest.NotificationCenterClient;
 import org.eclipse.ecsp.services.clientlib.HcpRestClientLibrary;

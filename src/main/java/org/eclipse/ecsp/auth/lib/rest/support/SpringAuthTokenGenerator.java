@@ -21,12 +21,12 @@
 package org.eclipse.ecsp.auth.lib.rest.support;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.eclipse.ecsp.common.config.EnvConfig;
 import jakarta.annotation.PostConstruct;
 import org.apache.hc.core5.http.ContentType;
 import org.eclipse.ecsp.auth.lib.config.AuthProperty;
 import org.eclipse.ecsp.auth.lib.rest.model.AccessTokenDetails;
 import org.eclipse.ecsp.common.CommonConstants;
+import org.eclipse.ecsp.common.config.EnvConfig;
 import org.eclipse.ecsp.services.clientlib.HcpRestClientLibrary;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
