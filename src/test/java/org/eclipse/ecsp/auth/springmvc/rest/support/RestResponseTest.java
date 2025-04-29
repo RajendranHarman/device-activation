@@ -1,0 +1,70 @@
+/*
+ *  *******************************************************************************
+ *  Copyright (c) 2023-24 Harman International
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ *
+ *  SPDX-License-Identifier: Apache-2.0
+ *  *******************************************************************************
+ */
+
+package org.eclipse.ecsp.auth.springmvc.rest.support;
+
+import org.junit.Test;
+import org.mockito.InjectMocks;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+/**
+ * Test class for RestResponse.
+ */
+public class RestResponseTest {
+
+    @InjectMocks
+    private RestResponse restResponse;
+
+    @Test
+    public void createdTest() {
+        String resource = "resource";
+        String url = "url";
+        assertNotNull(restResponse.created(resource, url));
+    }
+
+    @Test
+    public void notFoundTest() {
+        String message = "message";
+        assertNotNull(restResponse.notFound(message));
+    }
+
+    @Test
+    public void method_Not_AllowedTest() {
+        assertNotNull(restResponse.methodNotAllowed());
+    }
+
+    @Test
+    public void login_FailTest() {
+        assertNotNull(restResponse.loginFail());
+    }
+
+    @Test
+    public void activation_FailedTest() {
+        String message = "message";
+        assertNotNull(restResponse.activationFailed(message));
+    }
+
+    @Test
+    public void authorization_FailedTest() {
+        String string = "message";
+        assertNotNull(restResponse.authorizationFailed(string));
+    }
+}
