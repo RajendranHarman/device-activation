@@ -1,4 +1,4 @@
-FROM azul/zulu-openjdk:17.0.8
+FROM tomcat:10.1.40-jdk17
 
 ARG ARTIFACT_ID
 ENV ARTIFACT_ID ${ARTIFACT_ID}

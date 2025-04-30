@@ -733,8 +733,8 @@ public class DeviceServiceV2Test {
         activationRequestData.setVin("TESTVIN_Make:SECOND_Model:200_Year:2013_Type:Car_0");
         activationRequestData.setSerialNumber("523749811223666");
         activationRequestData.setQualifier(
-            "YzZNBBmWCV3tQs0WsmHlVsVKTcxsU7xrtUU1gp7Iy/XqWHr2OlFYjm4nJwDr6jb4yNFCt2i6xpRtaNLv3OSX"
-                + "Uit9gDu5bIdMY6ugUr2qS7E=");
+                "Bwm5snSM7N9a5bb7wI52EgDyq2Nj51oXVV7WeeMRGewPL6AVNcbloWerZeITTJ0X2SB4nVY"
+                + "4IM2IIAJIJW1ulL7+cNchIgF2w4N07rMeMgM=");
         activationRequestData.setProductType("TestProductType");
         activationRequestData.setHwVersion("1.4.1");
         activationRequestData.setSwVersion("1.2.1");
@@ -774,8 +774,8 @@ public class DeviceServiceV2Test {
         activationRequestData.setVin("TESTVIN_Make:SECOND_Model:200_Year:2013_Type:Car_0");
         activationRequestData.setSerialNumber("523749811223666");
         activationRequestData.setQualifier(
-            "YzZNBBmWCV3tQs0WsmHlVsVKTcxsU7xrtUU1gp7Iy/XqWHr2OlFYjm4nJwDr6jb4yNFCt2i6xpRtaNLv3OSX"
-                + "Uit9gDu5bIdMY6ugUr2qS7E=");
+                "Bwm5snSM7N9a5bb7wI52EgDyq2Nj51oXVV7WeeMRGewPL6AVNcbloWerZeITTJ0X2SB4nVY"
+                + "4IM2IIAJIJW1ulL7+cNchIgF2w4N07rMeMgM=");
         activationRequestData.setProductType("TestProductType");
         activationRequestData.setHwVersion("1.4.1");
         activationRequestData.setSwVersion("1.2.1");
@@ -821,8 +821,8 @@ public class DeviceServiceV2Test {
         activationRequestData.setVin("TESTVIN_Make:SECOND_Model:200_Year:2013_Type:Car_0");
         activationRequestData.setSerialNumber("523749811223666");
         activationRequestData.setQualifier(
-            "YzZNBBmWCV3tQs0WsmHlVsVKTcxsU7xrtUU1gp7Iy/XqWHr2OlFYjm4nJwDr6jb4yNFCt2i6xpRtaNLv3OSX"
-                + "Uit9gDu5bIdMY6ugUr2qS7E=");
+                "Bwm5snSM7N9a5bb7wI52EgDyq2Nj51oXVV7WeeMRGewPL6AVNcbloWerZeITTJ0X2SB4nVY"
+                + "4IM2IIAJIJW1ulL7+cNchIgF2w4N07rMeMgM=");
         activationRequestData.setProductType("TestProductType");
         activationRequestData.setHwVersion("1.4.1");
         activationRequestData.setSwVersion("1.2.1");
@@ -862,8 +862,8 @@ public class DeviceServiceV2Test {
         activationRequestData.setVin("TESTVIN_Make:SECOND_Model:200_Year:2013_Type:Car_0");
         activationRequestData.setSerialNumber("523749811223666");
         activationRequestData.setQualifier(
-            "YzZNBBmWCV3tQs0WsmHlVsVKTcxsU7xrtUU1gp7Iy/XqWHr2OlFYjm4nJwDr6jb4yNFCt2i6xpRtaNLv3OSX"
-                + "Uit9gDu5bIdMY6ugUr2qS7E=");
+                "Bwm5snSM7N9a5bb7wI52EgDyq2Nj51oXVV7WeeMRGewPL6AVNcbloWerZeITTJ0X2SB4nVY"
+                + "4IM2IIAJIJW1ulL7+cNchIgF2w4N07rMeMgM=");
         activationRequestData.setProductType("TestProductType");
         activationRequestData.setHwVersion("1.4.1");
         activationRequestData.setSwVersion("1.2.1");
