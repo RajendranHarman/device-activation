@@ -33,7 +33,7 @@
     <licenses>
         <license>
             <name>Apache-2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
         </license>
     </licenses>
 
@@ -180,6 +180,24 @@
         </checkstyle.config.location>
         <sonar.java.checkstyle.reportPaths>${project.build.directory}/checkstyle-result.xml
         </sonar.java.checkstyle.reportPaths>
+        <license-tool-plugin.version>1.1.0</license-tool-plugin.version>
+        <skipDash>true</skipDash>
+        <failWhenReviewNeeded>false</failWhenReviewNeeded>
+        <logback-gelf.version>6.1.0</logback-gelf.version>
+        <maven-gpg-plugin.version>3.1.0</maven-gpg-plugin.version>
+        <skipCheckstyle>false</skipCheckstyle>
+        <skipJavadocs>false</skipJavadocs>
+        <skipSource>false</skipSource>
+        <skipGpgSign>true</skipGpgSign>
+        <nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
+        <skipNexusStaging>true</skipNexusStaging>
+        <checkstyle.version>10.23.0</checkstyle.version>
+        <maven.checkstyle.plugin.version>3.6.0</maven.checkstyle.plugin.version>
+        <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
+        <maven-javadoc-plugin.version>3.11.2</maven-javadoc-plugin.version>
+        <maven-dependency-plugin.version>3.8.1</maven-dependency-plugin.version>
+        <jacoco-maven-plugin.version>0.8.13</jacoco-maven-plugin.version>
+        <cyclonedx-maven-plugin.version>2.9.1</cyclonedx-maven-plugin.version>
     </properties>
 
     <distributionManagement>
@@ -485,23 +503,14 @@
         <finalName>device-activation</finalName>
         <plugins>
             <plugin>
-                <groupId>org.sonarsource.scanner.maven</groupId>
-                <artifactId>sonar-maven-plugin</artifactId>
-                <version>${sonar-maven-plugin.version}</version>
-            </plugin>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <source>${java.compiler.version}</source>
-                    <target>${java.compiler.version}</target>
-                    <encoding>UTF-8</encoding>
-                </configuration>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco-maven-plugin.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.cyclonedx</groupId>
                 <artifactId>cyclonedx-maven-plugin</artifactId>
-                <version>2.7.10</version>
+                <version>${cyclonedx-maven-plugin.version}</version>
                 <configuration>
                     <projectType>application</projectType>
                     <schemaVersion>1.5</schemaVersion>
@@ -526,57 +535,19 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>${war.plugin.version}</version>
-                <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                    <packagingExcludes>**/*.properties,**/log4j.properties,**/context.xml</packagingExcludes>
-                </configuration>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>${sonar-maven-plugin.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
-                <version>${release.plugin.version}</version>
-                <configuration>
-                    <preparationGoals>package docker:push</preparationGoals>
-                </configuration>
-            </plugin>
-            <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${surefire.plugin.version}</version>
-            </plugin>
-            <!--  JaCoCo Maven plugin to generate a code coverage report for a Java project -->
-            <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>${jacoco.plugin.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>prepare-agent</goal>
-                        </goals>
-                    </execution>
-                    <!-- attached to Maven test phase -->
-                    <execution>
-                        <id>report</id>
-                        <phase>test</phase>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>${maven-dependency-plugin.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>${maven-checkstyle-plugin.version}</version>
-
-                <configuration>
-                    <!--                    // To enable test classes-->
-                    <includeTestSourceDirectory>true</includeTestSourceDirectory>
-                </configuration>
-
+                <version>${maven.checkstyle.plugin.version}</version>
                 <executions>
                     <execution>
                         <id>validate</id>
@@ -591,16 +562,14 @@
                             <includeTestSourceDirectory>true</includeTestSourceDirectory>
                             <includeResources>true</includeResources>
                             <includeTestResources>true</includeTestResources>
+                            <skip>${skipCheckstyle}</skip>
                         </configuration>
                         <goals>
-                            <goal>checkstyle</goal>
-                            <!--                            // to only check please use the below goal. With mvn clean install, the check goal will run and with above configuration, the build will fail if there are any checkstyle violations.-->
-                            <!--                            //  <goal>check</goal>-->
+                            <goal>check</goal>
                         </goals>
                     </execution>
                 </executions>
                 <dependencies>
-                    <!--                    // need to add below dependency to get validated against latest rules from check style.-->
                     <dependency>
                         <groupId>com.puppycrawl.tools</groupId>
                         <artifactId>checkstyle</artifactId>
@@ -609,11 +578,48 @@
                 </dependencies>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>${maven-source-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>sources</classifier>
+                        </configuration>
+                    </execution>
+                </executions>
+                <configuration>
+                    <skipSource>${skipSource}</skipSource>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven-javadoc-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <skip>${skipJavadocs}</skip>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.eclipse.dash</groupId>
                 <artifactId>license-tool-plugin</artifactId>
-                <version>1.1.0</version>
+                <version>${license-tool-plugin.version}</version>
                 <configuration>
                     <includeScope>test</includeScope>
+                    <skip>${skipDash}</skip>
+                    <failWhenReviewNeeded>${failWhenReviewNeeded}</failWhenReviewNeeded>
                 </configuration>
                 <executions>
                     <execution>
@@ -624,136 +630,84 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>${maven-gpg-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <gpgArguments>
+                        <arg>--pinentry-mode</arg>
+                        <arg>loopback</arg>
+                        <arg>--batch</arg>
+                        <arg>--yes</arg>
+                    </gpgArguments>
+                    <skip>${skipGpgSign}</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>${nexus-staging-maven-plugin.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <skipStaging>${skipNexusStaging}</skipStaging>
+                    <autoReleaseAfterClose>${autoReleaseAfterClose}</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
     <profiles>
         <profile>
+            <id>default</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <skipDash>true</skipDash>
+                <skipTests>false</skipTests>
+                <skipGpgSign>true</skipGpgSign>
+                <skipJavadocs>false</skipJavadocs>
+                <skipSource>false</skipSource>
+                <skipNexusStaging>true</skipNexusStaging>
+                <autoReleaseAfterClose>false</autoReleaseAfterClose>
+            </properties>
+        </profile>
+        <profile>
             <id>dash</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.eclipse.dash</groupId>
-                        <artifactId>license-tool-plugin</artifactId>
-                        <configuration>
-                            <skip>false</skip>
-                            <failWhenReviewNeeded>true</failWhenReviewNeeded>
-                        </configuration>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <skipTests>true</skipTests>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
+            <properties>
+                <skipDash>false</skipDash>
+                <failWhenReviewNeeded>true</failWhenReviewNeeded>
+                <skipTests>true</skipTests>
+                <skipCheckstyle>true</skipCheckstyle>
+                <skipGpgSign>true</skipGpgSign>
+                <skipJavadocs>true</skipJavadocs>
+                <skipSource>true</skipSource>
+                <skipNexusStaging>true</skipNexusStaging>
+                <autoReleaseAfterClose>false</autoReleaseAfterClose>
+            </properties>
         </profile>
         <profile>
             <id>release</id>
             <properties>
-                <maven.test.skip>true</maven.test.skip>
+                <skipDash>true</skipDash>
+                <skipTests>false</skipTests>
+                <skipGpgSign>false</skipGpgSign>
+                <skipJavadocs>false</skipJavadocs>
+                <skipSource>false</skipSource>
+                <skipNexusStaging>false</skipNexusStaging>
+                <autoReleaseAfterClose>true</autoReleaseAfterClose>
             </properties>
-            <distributionManagement>
-                <snapshotRepository>
-                    <id>ossrh</id>
-                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-                </snapshotRepository>
-                <repository>
-                    <id>ossrh</id>
-                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-                </repository>
-            </distributionManagement>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.sonatype.plugins</groupId>
-                        <artifactId>nexus-staging-maven-plugin</artifactId>
-                        <version>1.6.13</version>
-                        <extensions>true</extensions>
-                        <configuration>
-                            <serverId>ossrh</serverId>
-                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
-                        </configuration>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>sign-artifacts</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>sign</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-source-plugin</artifactId>
-                        <version>3.3.0</version>
-                        <executions>
-                            <execution>
-                                <id>attach-sources</id>
-                                <goals>
-                                    <goal>jar-no-fork</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>3.2.0</version>
-                        <executions>
-                            <execution>
-                                <id>attach-javadocs</id>
-                                <goals>
-                                    <goal>jar</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>javadoc</id>
-            <properties>
-                <maven.test.skip>true</maven.test.skip>
-            </properties>
-            <distributionManagement>
-                <snapshotRepository>
-                    <id>ossrh</id>
-                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-                </snapshotRepository>
-                <repository>
-                    <id>ossrh</id>
-                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-                </repository>
-            </distributionManagement>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>3.2.0</version>
-                        <executions>
-                            <execution>
-                                <id>attach-javadocs</id>
-                                <goals>
-                                    <goal>jar</goal>
-                                </goals>
-                                <configuration>
-                                    <release>${java.version}</release>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
         </profile>
     </profiles>
 </project>

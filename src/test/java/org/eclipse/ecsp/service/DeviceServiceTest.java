@@ -20,7 +20,6 @@
 
 package org.eclipse.ecsp.service;
 
-import org.eclipse.ecsp.common.config.EnvConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.eclipse.ecsp.auth.lib.config.AuthProperty;
 import org.eclipse.ecsp.auth.lib.dao.DeviceFactoryData;
@@ -38,6 +37,7 @@ import org.eclipse.ecsp.auth.lib.rest.support.SpringAuthTokenGenerator;
 import org.eclipse.ecsp.auth.lib.service.DeviceService;
 import org.eclipse.ecsp.auth.lib.validate.DeviceValidatorDefaultImpl;
 import org.eclipse.ecsp.auth.lib.validate.DeviceValidatorFactory;
+import org.eclipse.ecsp.common.config.EnvConfig;
 import org.eclipse.ecsp.services.device.dao.DeviceDao;
 import org.eclipse.ecsp.services.device.model.Device;
 import org.eclipse.ecsp.services.deviceactivation.dao.DeviceActivationStateDao;

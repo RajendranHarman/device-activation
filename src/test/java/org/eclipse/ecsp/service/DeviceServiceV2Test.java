@@ -20,7 +20,6 @@
 
 package org.eclipse.ecsp.service;
 
-import org.eclipse.ecsp.common.config.EnvConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.eclipse.ecsp.auth.lib.config.AuthProperty;
@@ -38,6 +37,7 @@ import org.eclipse.ecsp.auth.lib.service.AssociationService;
 import org.eclipse.ecsp.auth.lib.service.DeviceServiceV2;
 import org.eclipse.ecsp.auth.lib.util.CryptographyUtil;
 import org.eclipse.ecsp.auth.lib.util.DeviceActivationUtil;
+import org.eclipse.ecsp.common.config.EnvConfig;
 import org.eclipse.ecsp.exception.shared.ApiPreConditionFailedException;
 import org.eclipse.ecsp.exception.shared.ApiResourceNotFoundException;
 import org.eclipse.ecsp.exception.shared.ApiTechnicalException;

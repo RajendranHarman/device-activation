@@ -20,12 +20,12 @@
 
 package org.eclipse.ecsp.observer;
 
-import org.eclipse.ecsp.common.config.EnvConfig;
 import org.eclipse.ecsp.auth.lib.config.AuthProperty;
 import org.eclipse.ecsp.auth.lib.obsever.DefaultDeviceStateChangeObservable;
 import org.eclipse.ecsp.auth.lib.obsever.DeviceStateActivation;
 import org.eclipse.ecsp.auth.lib.obsever.DeviceStateObserver;
 import org.eclipse.ecsp.auth.lib.rest.model.ActivationResponse;
+import org.eclipse.ecsp.common.config.EnvConfig;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
