@@ -1,14 +1,14 @@
 FROM tomcat:10.1.40-jdk17
 
-ARG ARTIFACT_ID
-ENV ARTIFACT_ID ${ARTIFACT_ID}
+#ARG ARTIFACT_ID
+#ENV ARTIFACT_ID ${ARTIFACT_ID}
 
 #ARG ENVIRONMENT
 #RUN echo ${ENVIRONMENT}
 
 #New Code
 ENV CATALINA_OPTS="-server -Xmx2G -Xms1G -XX:+UseG1GC -XX:MaxGCPauseMillis=20 -XX:InitiatingHeapOccupancyPercent=35 -XX:+DisableExplicitGC -Djava.awt.headless=true"
-ADD target/${ARTIFACT_ID}.war /tmp/hcp-auth-webapp.war
+ADD target/device-activation.war /tmp/hcp-auth-webapp.war
 COPY src/scripts/* /opt/hcp-auth-webapp/bin/
 
 # Add conf directory
