@@ -20,9 +20,9 @@
 
 package org.eclipse.ecsp.auth.lib.api;
 
-import org.eclipse.ecsp.common.config.EnvConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.eclipse.ecsp.auth.lib.config.AuthProperty;
+import org.eclipse.ecsp.common.config.EnvConfig;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;

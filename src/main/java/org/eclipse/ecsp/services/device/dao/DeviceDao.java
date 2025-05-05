@@ -254,12 +254,13 @@ public class DeviceDao {
     }
 
     /**
-     * Check whether the passcode is valid and returns the device object associated with it.
+     * Checks the login credentials of a device using the provided device ID and passcode.
+     * Queries the database to verify if a device with the given credentials exists and is active.
      *
-     * @param passcode passcode
-     * @return Device
-     * @throws SQLException           SQLException
-     * @throws ClassNotFoundException ClassNotFoundException
+     * @param deviceId The unique identifier of the device (Harman ID).
+     * @param passcode The passcode associated with the device.
+     * @return A {@link Device} object if the credentials are valid and the device is active,
+     *         or {@code null} if no matching device is found.
      */
     public Device checkLogin(String deviceId, String passcode) {
         Device device = null;

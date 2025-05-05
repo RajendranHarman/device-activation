@@ -23,12 +23,33 @@ package org.eclipse.ecsp.auth.lib.rest.model;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
+
 /**
- * This class implements the ConstraintValidator interface for the NullOrNotEmpty annotation.
- * It checks if the given string value is either null or not empty.
+ * The {@code NullOrNotEmptyValidator} class is a custom constraint validator 
+ * that checks whether a given string is either {@code null} or not empty. 
+ * This validator is used in conjunction with the {@link NullOrNotEmpty} 
+ * annotation to enforce the validation logic.
  *
- * @param <NullOrNotEmpty> the annotation type
- * @param <String> the type of value being validated
+ * <p>Validation logic:
+ * <ul>
+ *   <li>If the string is {@code null}, it is considered valid.</li>
+ *   <li>If the string is not {@code null} but is empty, it is considered invalid.</li>
+ *   <li>If the string is not {@code null} and not empty, it is considered valid.</li>
+ * </ul>
+ *
+ * <p>This class implements the {@link ConstraintValidator} interface, 
+ * which provides the methods to initialize the validator and perform the validation.
+ *
+ * <p>Usage example:
+ * <pre>
+ * {@code
+ * @NullOrNotEmpty
+ * private String exampleField;
+ * }
+ * </pre>
+ *
+ * @see NullOrNotEmpty
+ * @see jakarta.validation.ConstraintValidator
  */
 public class NullOrNotEmptyValidator implements ConstraintValidator<NullOrNotEmpty, String> {
 
