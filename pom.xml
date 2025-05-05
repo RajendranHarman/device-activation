@@ -502,6 +502,15 @@
     <build>
         <finalName>device-activation</finalName>
         <plugins>
+        	<plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                    <configuration>
+                        <source>${java.compiler.version}</source>
+                        <target>${java.compiler.version}</target>
+                        <encoding>UTF-8</encoding>
+                    </configuration>
+                </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>

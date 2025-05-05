@@ -36,7 +36,7 @@ import java.security.SecureRandom;
 
 /**
  * CryptographyUtil to generate alpha numeric string.
- * And encrption & decryption of the given input data.
+ * And encrption and decryption of the given input data.
  */
 @Component
 public class CryptographyUtil {

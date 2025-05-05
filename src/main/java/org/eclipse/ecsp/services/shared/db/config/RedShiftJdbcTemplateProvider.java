@@ -29,9 +29,30 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 /**
- * Returns the JdbcTemplate instance for Redshift database.
+ * The {@code RedShiftJdbcTemplateProvider} class provides a method to create and configure
+ * a {@link JdbcTemplate} instance using a Redshift data source. It retrieves the data source
+ * from the JNDI context and uses it to initialize the {@link JdbcTemplate}.
  *
- * @return the JdbcTemplate instance
+ * <p>This class is designed to simplify the process of interacting with a Redshift database
+ * by providing a pre-configured {@link JdbcTemplate} instance.
+ *
+ * <p><b>Usage:</b>
+ * <pre>
+ * {@code
+ * RedShiftJdbcTemplateProvider provider = new RedShiftJdbcTemplateProvider();
+ * JdbcTemplate jdbcTemplate = provider.jdbcTemplate();
+ * }
+ * </pre>
+ *
+ * <p><b>Note:</b> Ensure that the JNDI resource "jdbc/redshift" is properly configured
+ * in the application server or container environment.
+ *
+ * <p><b>Logging:</b> Any {@link NamingException} encountered during the lookup process
+ * is logged using the {@code @Slf4j} logger.
+ *
+ * @author Akshay
+ * @see JdbcTemplate
+ * @see DataSource
  */
 @Slf4j
 public class RedShiftJdbcTemplateProvider {
