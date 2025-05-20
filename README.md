@@ -74,7 +74,7 @@ To run a method from within a test
 
 ### Deployment
 
-1. The component can be deployed as a Kubernetes pod by installing Device factory management charts.
+1. The component can be deployed as a Kubernetes pod by installing Device Activation charts.
 Link: [Charts](../../../ecsp-helm-charts/tree/main/device-auth)
 
 2. Postgres DB needs to be installed and ignite database/schema should be created with the required tables.
