@@ -2,13 +2,13 @@
   <img src="./images/logo.png" width="300" height="150"/>
 </div>
 
+# Device Activation
+
 [![Maven Build & Sonar Analysis](https://github.com/eclipse-ecsp/device-activation/actions/workflows/maven-build.yml/badge.svg)](https://github.com/eclipse-ecsp/device-activation/actions/workflows/maven-build.yml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=eclipse-ecsp_device-activation&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=eclipse-ecsp_device-activation)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=eclipse-ecsp_device-activation&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=eclipse-ecsp_device-activation)
 [![License Compliance](https://github.com/eclipse-ecsp/device-activation/actions/workflows/licence-compliance.yaml/badge.svg)](https://github.com/eclipse-ecsp/device-activation/actions/workflows/licence-compliance.yaml)
 [![Latest Release](https://img.shields.io/github/v/release/eclipse-ecsp/device-activation?sort=semver)](https://github.com/eclipse-ecsp/device-activation/releases)
-
-# Device Activation
 
 Device Activation Component provides restful services for activating and reactivating devices like Dongle, HU, TCU and Dashcam; so that these devices can send data to the cloud post activation/reactivation.
 
@@ -54,7 +54,9 @@ The list of tools required to build and run the project:
 
 Checkstyle plugin [maven-checkstyle-plugin:3.2.1](https://maven.apache.org/plugins/maven-checkstyle-plugin/) is integrated in [pom.xml](./pom.xml) which runs in the validate phase and check goal of the maven lifecycle and fails the build if there are any checkstyle errors in the project.
 
-To run checkstyle plugin explicitly, run the following command: mvn checkstyle:check
+To run checkstyle plugin explicitly, run the following command:
+
+```mvn checkstyle:check```
 
 ### Running the tests
 
@@ -72,12 +74,13 @@ To run a method from within a test
 
 ### Deployment
 
-The component can be deployed as a Kubernetes pod by installing Device factory management charts.
+1. The component can be deployed as a Kubernetes pod by installing Device factory management charts.
 Link: [Charts](../../../ecsp-helm-charts/tree/main/device-auth)
 
-Postgres DB needs to be installed and ignite database/schema should be created with the required tables.
+2. Postgres DB needs to be installed and ignite database/schema should be created with the required tables.
 Link of the database and table scripts to be installed: [dmpostgres.sql](https://github.com/eclipse-ecsp/ecsp-helm-charts/blob/main/postgresql/db-scripts/dmpostgres.sql)
-Detailed information about the request and response can be found in API docs [Device Activation APIs](https://eclipse-ecsp.github.io/ecsp-website/api-def/api-static-swagger.html#tag/device-authentication-controller).
+
+3. Detailed information about the request and response can be found in API docs [Device Activation APIs](https://eclipse-ecsp.github.io/ecsp-website/api-def/api-static-swagger.html#tag/device-authentication-controller).
 
 ## Architecture
 
@@ -93,17 +96,17 @@ The end result of Device Activation/Reactivation is the generation of HarmanID/D
 
 ## Built With Dependencies
 
-* [Spring](https://spring.io/projects/spring-framework) - Web framework used for building the application.
-* [Maven](https://maven.apache.org/) - Build tool used for dependency management.
+* [Spring](https://spring.io/projects/spring-framework) - Web framework used for building the application
+* [Maven](https://maven.apache.org/) - Build tool used for dependency management
 * [Postgres](https://jdbc.postgresql.org/) - Postgres JDBC driver
-* [Project Lombok](https://projectlombok.org/) - Auto-generates Java boilerplate code (e.g., getters, setters, builders).
+* [Project Lombok](https://projectlombok.org/) - Auto-generates Java boilerplate code (e.g., getters, setters, builders)
 * [Apache Common](https://commons.apache.org/proper/commons-lang/) - Java Library
 * [Jackson](https://github.com/FasterXML) - Reading JSON Objects
-* [MChange](https://www.mchange.com/projects/c3p0/) - JDBC3 Connection and Statement Pooling library.
-* [Logback](https://logback.qos.ch/) - Concrete logging implementation used with SLF4J.
-* [slf4j](https://www.slf4j.org/) - Logging facade providing abstraction for various logging frameworks.
-* [Mockito](https://site.mockito.org/) - Mocking framework for testing.
-* [JUnit](https://junit.org/) - Unit testing framework.
+* [MChange](https://www.mchange.com/projects/c3p0/) - JDBC3 Connection and Statement Pooling library
+* [Logback](https://logback.qos.ch/) - Concrete logging implementation used with SLF4J
+* [slf4j](https://www.slf4j.org/) - Logging facade providing abstraction for various logging frameworks
+* [Mockito](https://site.mockito.org/) - Mocking framework for testing
+* [JUnit](https://junit.org/) - Unit testing framework
 
 ## How to contribute
 
