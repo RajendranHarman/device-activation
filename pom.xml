@@ -23,7 +23,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.eclipse.ecsp</groupId>
     <artifactId>device-activation</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>war</packaging>
 
     <name>device-activation</name>
@@ -175,24 +175,13 @@
         <maven-checkstyle-plugin.version>3.3.1</maven-checkstyle-plugin.version>
         <checkstyle.version>10.13.0</checkstyle.version>
         <maven-gpg-plugin.version>3.1.0</maven-gpg-plugin.version>
-        <nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
+        <central-publishing-maven-plugin.version>0.7.0</central-publishing-maven-plugin.version>
         <environment>dev</environment>
         <checkstyle.config.location>${project.basedir}/checkstyle.xml
         </checkstyle.config.location>
         <sonar.java.checkstyle.reportPaths>${project.build.directory}/checkstyle-result.xml
         </sonar.java.checkstyle.reportPaths>
     </properties>
-
-    <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-    </distributionManagement>
 
     <pluginRepositories>
         <pluginRepository>
@@ -644,28 +633,20 @@
              <properties>
                  <maven.test.skip>true</maven.test.skip>
              </properties>
-             <distributionManagement>
-                 <snapshotRepository>
-                     <id>ossrh</id>
-                     <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-                 </snapshotRepository>
-                 <repository>
-                     <id>ossrh</id>
-                     <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-                 </repository>
-             </distributionManagement>
              <build>
                  <plugins>
                      <plugin>
-                         <groupId>org.sonatype.plugins</groupId>
-                         <artifactId>nexus-staging-maven-plugin</artifactId>
-                         <version>1.6.13</version>
-                         <extensions>true</extensions>
-                         <configuration>
-                             <serverId>ossrh</serverId>
-                             <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                             <autoReleaseAfterClose>true</autoReleaseAfterClose>
-                         </configuration>
+                         <groupId>org.sonatype.central</groupId>
+                        <artifactId>central-publishing-maven-plugin</artifactId>
+                        <version>${central-publishing-maven-plugin.version}</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <publishingServerId>central</publishingServerId>
+                            <autoPublish>true</autoPublish>
+                            <waitUntil>published</waitUntil>
+                            <centralSnapshotsUrl>https://central.sonatype.com/repository/maven-snapshots/</centralSnapshotsUrl>
+                        <skipPublishing>false</skipPublishing>
+                        </configuration>
                      </plugin>
                      <plugin>
                          <groupId>org.apache.maven.plugins</groupId>
@@ -713,17 +694,8 @@
              <id>javadoc</id>
              <properties>
                  <maven.test.skip>false</maven.test.skip>
-                 </properties>
-             <distributionManagement>
-                 <snapshotRepository>
-                     <id>ossrh</id>
-                     <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-                 </snapshotRepository>
-                 <repository>
-                     <id>ossrh</id>
-                     <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-                 </repository>
-             </distributionManagement>
+             </properties>
+             
              <build>
                  <plugins>
                      <plugin>
